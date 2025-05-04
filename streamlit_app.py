@@ -146,7 +146,6 @@ st.sidebar.header("Redis Monitoring")
 if st.sidebar.button("Check Celery Queue"):
     try:
         import redis
-        # Fixed URL - added port 15996 after the colon
         r = redis.Redis.from_url("redis://default:GRhoCbTJb8HTZAxa430RUAeTrDMQBI1M@redis-15996.fcrce190.us-east-1-1.ec2.redns.redis-cloud.com:15996")
         
         # Add timeout to prevent infinite waiting
