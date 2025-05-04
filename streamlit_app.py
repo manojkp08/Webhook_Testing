@@ -6,7 +6,7 @@ import json
 from datetime import datetime
 
 # Configuration
-BASE_URL = "http://localhost:8000"  # Change if hosted
+BASE_URL = "https://segwise-webhook-service.onrender.com"  # Change if hosted
 ENDPOINTS = {
     "Create Subscription": "/api/v1/subscriptions/",
     "Ingest Webhook": "/api/v1/ingest/{subscription_id}",
