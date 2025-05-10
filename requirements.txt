@@ -11,3 +11,4 @@ seaborn
 matplotlib
 plotly
 streamlit-mermaid
+streamlit-extras
