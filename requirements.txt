@@ -5,3 +5,9 @@ numpy
 datetime
 psycopg2-binary
 redis
+streamlit-echarts
+altair
+seaborn
+matplotlib
+plotly
+streamlit-mermaid
