@@ -8,11 +8,8 @@ from streamlit_extras.let_it_rain import rain
 from streamlit_mermaid import st_mermaid
 import psycopg2
 import redis
-from dotenv import load_dotenv
 import os
 
-# Config
-load_dotenv()
 st.set_page_config(
     layout="wide",
     page_title="Webhook HQ",
