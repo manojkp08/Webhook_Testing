@@ -136,6 +136,12 @@ if service == "Create Subscription":
 
 elif service == "Ingest Webhook":
     st.subheader("⚡ Webhook Simulator")
+
+    st.markdown("""
+    🎯 **Recruiter Test URL:**  
+    `https://hook.eu2.make.com/oa7dkj27u6dsx5lcnj7siwcldjg4uj1v` (Copy this to test - no setup needed!)  
+    """)
+
     sub_id = st.text_input(
         "Subscription ID",
         st.session_state.get("last_subscription", ""),
