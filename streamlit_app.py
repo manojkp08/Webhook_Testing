@@ -19,7 +19,6 @@ st.set_page_config(
 
 # Secrets (Create .env file)
 BASE_URL = os.getenv("BASE_URL", "https://segwise-webhook-service.onrender.com")
-REDIS_URL = os.getenv("redis://default:GRhoCbTJb8HTZAxa430RUAeTrDMQBI1M@redis-15996.fcrce190.us-east-1-1.ec2.redns.redis-cloud.com:15996")
 
 # Constants
 ENDPOINTS = {
@@ -31,12 +30,12 @@ ENDPOINTS = {
 # Helper Functions
 @st.cache_data(ttl=60)
 def fetch_deliveries():
-    conn = psycopg2.connect("host=34.41.72.59 dbname=webhook-db user=postgres password=segwise123")
+    conn = psycopg2.connect("host=34.45.129.153 dbname=segwise-webhook-db user=postgres password=vSaVzzRqQn")
     return pd.read_sql("SELECT id, status, status_code, created_at FROM delivery_logs ORDER BY created_at DESC LIMIT 100", conn)
 
 @st.cache_data(ttl=60)
 def fetch_subscriptions():
-    conn = psycopg2.connect("host=34.41.72.59 dbname=webhook-db user=postgres password=segwise123")
+    conn = psycopg2.connect("host=34.45.129.153 dbname=segwise-webhook-db user=postgres password=vSaVzzRqQn")
     return pd.read_sql("SELECT id, target_url, is_active, created_at FROM subscriptions WHERE is_active = true", conn)
 
 def call_api(method, endpoint, data=None):
@@ -57,7 +56,7 @@ st.caption("Real-time Webhook Management Dashboard")
 # Updated Live Metrics (Tere Schema ke Hisab se)
 @st.cache_data(ttl=60)  # Auto-refresh every 60 sec / 1 min
 def get_live_metrics():
-    conn = psycopg2.connect("host=34.41.72.59 dbname=webhook-db user=postgres password=segwise123")
+    conn = psycopg2.connect("host=34.45.129.153 dbname=segwise-webhook-db user=postgres password=vSaVzzRqQn")
     cursor = conn.cursor()
     
     # 1. Total Deliveries (DeliveryLogs se)
@@ -229,7 +228,7 @@ st.sidebar.header("Redis Monitoring")
 if st.sidebar.button("Check Celery Queue"):
     try:
         import redis
-        r = redis.Redis.from_url("redis://default:GRhoCbTJb8HTZAxa430RUAeTrDMQBI1M@redis-15996.fcrce190.us-east-1-1.ec2.redns.redis-cloud.com:15996")
+        r = redis.Redis.from_url("redis://default:MV6QUhIJKDkE1Auf2BYhBQEnP6YzIisv@redis-16388.c279.us-central1-1.gce.redns.redis-cloud.com:16388")
         
         # Add timeout to prevent infinite waiting
         queue_length = r.llen("celery")
